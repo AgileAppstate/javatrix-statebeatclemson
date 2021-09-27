@@ -5,7 +5,7 @@ https://cs.appstate.edu/~jbf/classes/cs5666/Javatrix/ <br>
 
 ### Helpful tips <br>
 How to push local created branch to GitHub repository <br>
-''' java
+```
 git push origin branch_name
-'''
+```
 
