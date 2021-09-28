@@ -4,6 +4,8 @@
 https://cs.appstate.edu/~jbf/classes/cs5666/Javatrix/ <br>
 
 ## Helpful tips <br>
+At start of working session ```git pull``` to update files for any changes made by team member <br>
+
 How to push local created branch to GitHub repository: <br>
 ```
 git push origin branch_name
