@@ -25,6 +25,11 @@ public class Matrix{
 	    }
 	    this.A=A;
 	}
-	
+	public Matrix(double[][] A, int m, int n) {
+	    this.A = A;
+	    this.m = m;
+	    this.n = n;
+	}	
+
 
 }
