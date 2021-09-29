@@ -1,4 +1,4 @@
-
+package javatrix;
 import java.text.*;
 import java.io.PrintWriter;
 import java.util.Locale;

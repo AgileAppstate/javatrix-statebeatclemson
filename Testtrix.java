@@ -6,13 +6,13 @@ public class Testtrix {
 
         Matrix A = new Matrix(vals);
         Matrix x = new Matrix(3, 1, 1.);
-        Matrix b = A.times(x);
+        //Matrix b = A.times(x);
 
         A.print(9,4);
         System.out.println("x");
         x.print(9,4);
         System.out.println("=");
-        b.print(9,4);
+        //b.print(9,4);
 
 	/* b should be {6, 15, 24} */
    }
