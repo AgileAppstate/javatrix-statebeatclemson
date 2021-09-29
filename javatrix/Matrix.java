@@ -2,6 +2,7 @@ package javatrix;
 import java.text.*;
 import java.io.PrintWriter;
 import java.util.Locale;
+import java.util.*;
 
 public class Matrix{
 	//variables
@@ -116,6 +117,10 @@ public class Matrix{
 	    }
 	    output.println();
    	}
+
+	public double[][] getArray() {
+	    return A;
+	}
 	
 	public Matrix times(double s)
 	{
@@ -126,5 +131,29 @@ public class Matrix{
 		    C[i][j] = s * A[i][j];
 		}
 	    }
+	    return Z;			
+	}
+	
+	public Matrix times(Matrix B) { 
+	    if (B.m != n) {
+		throw new IllegalArgumentException("Matrix inner dimensions must agree.");
+	    }
+	    Matrix Z = new Matrix(m,B.n);
+	    double[][] C = Z.getArray();
+	    double[] BcolJ = new double[n];
+	    for (int j = 0; j < B.n; j++) {
+		for (int k = 0; k < n; k++) {
+		    BcolJ[k] = B.A[k][j];
+		}
+		for (int i = 0; i < m; i++) {
+		    double [] ArowI = A[i];
+		    double s = 0;
+		    for (int k = 0; k < n; k++) {
+			s += ArowI[k]*BcolJ[k];
+		    }
+		    C[i][j] = s;
+		}
+	    }
+	    return Z;
 	}
 }
