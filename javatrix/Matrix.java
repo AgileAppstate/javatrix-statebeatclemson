@@ -208,5 +208,36 @@ public class Matrix{
 	    return Z;
 	} 
 
-	public Matrix getMatrix(
+	public Matrix getMatrix(int i0, int i1, int[] c) {
+	    Matrix Z = new Matrix(i1-i0+1, c.length);
+	    double[][] B = Z.getArray();
+	    try {
+		for (int i = i0; i <= i1; i++) {
+		    for (int j = 0; j < c.length; j++) {
+			B[i-i0][j] = A[i][c[j]];
+		    }
+		}
+	    }
+	    catch (ArrayIndexOutOfBoundsException e) {
+		throw new ArrayIndexOutOfBoundsException("Submatrix indices");
+	    }
+	    return Z;
+	}
+
+	public Matrix getMatrix(int[] r, int j0, int j1) {
+	    Matrix Z = new Matrix(r.length, j1-j0+1);
+	    double[][] B = Z.getArray();
+	    try {
+		for (int i = 0; i < r.length; i++) {
+		    for (int j = j0; j <= j1; j++) {
+			B[i][j-j0] = A[r[i]][j];
+		    }
+		}
+	    }
+	    catch (ArrayIndexOutOfBoundsException e) {
+		throw new ArrayIndexOutOfBoundsException("Submatrix indices");
+	    }
+	    return Z;
+	} 
+
 }
