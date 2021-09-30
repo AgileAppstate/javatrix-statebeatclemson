@@ -171,4 +171,10 @@ public class Matrix{
 	    }
 	    return Z;
 	}
+	
+	public double get (int i, int j) {
+	    return A[i][j];
+	}
+	
+
 }
