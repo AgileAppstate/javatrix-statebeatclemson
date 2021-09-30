@@ -274,7 +274,7 @@ public class Matrix{
 	    try {
          	for (int i = 0; i < r.length; i++) {
             	    for (int j = j0; j <= j1; j++) {
-               		A[r[i]][j] = X.get(i,j-j0);
+               		A[r[i]][j] = Z.get(i,j-j0);
             	    }
          	}
       	    } 
