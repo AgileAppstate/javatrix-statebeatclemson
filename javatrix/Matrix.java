@@ -244,17 +244,56 @@ public class Matrix{
       	    A[i][j] = s;
    	}
 	
-	public void setMatrix (int i0, int i1, int j0, int j1, Matrix X) {
+	public void setMatrix (int i0, int i1, int j0, int j1, Matrix Z) {
       	    try {
          	for (int i = i0; i <= i1; i++) {
             	    for (int j = j0; j <= j1; j++) {
-               		A[i][j] = X.get(i-i0,j-j0);
+               		A[i][j] = Z.get(i-i0,j-j0);
             	    }
          	}
       	    } 
 	    catch(ArrayIndexOutOfBoundsException e) {
          	throw new ArrayIndexOutOfBoundsException("Submatrix indices");
       	    }
-   	} 
+   	}
+	 
+	public void setMatrix (int[] r, int[] c, Matrix Z) {
+      	    try {
+         	for (int i = 0; i < r.length; i++) {
+            	    for (int j = 0; j < c.length; j++) {
+               		A[r[i]][c[j]] = Z.get(i,j);
+            	    }
+         	}
+      	    } 
+	    catch(ArrayIndexOutOfBoundsException e) {
+         	throw new ArrayIndexOutOfBoundsException("Submatrix indices");
+      	    }
+   	}
+
+	public void setMatrix(int[] r, int j0, int j1, Matrix Z) {
+	    try {
+         	for (int i = 0; i < r.length; i++) {
+            	    for (int j = j0; j <= j1; j++) {
+               		A[r[i]][j] = X.get(i,j-j0);
+            	    }
+         	}
+      	    } 
+	    catch(ArrayIndexOutOfBoundsException e) {
+         	throw new ArrayIndexOutOfBoundsException("Submatrix indices");
+     	    }
+	}
+
+	public void setMatrix (int i0, int i1, int[] c, Matrix X) {
+      	    try {
+         	for (int i = i0; i <= i1; i++) {
+            	    for (int j = 0; j < c.length; j++) {
+               		A[i][c[j]] = X.get(i-i0,j);
+            	    }
+         	}
+      	    } 
+	    catch(ArrayIndexOutOfBoundsException e) {
+         	throw new ArrayIndexOutOfBoundsException("Submatrix indices");
+      	    }
+   	}
 
 }
