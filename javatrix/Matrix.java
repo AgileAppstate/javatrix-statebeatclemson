@@ -3,6 +3,7 @@ import java.text.*;
 import java.io.PrintWriter;
 import java.util.Locale;
 import java.util.*;
+import java.lang.Object;
 
 public class Matrix{
 	/* Variables */
@@ -150,21 +151,7 @@ public class Matrix{
 	    output.println();
    	}
 
-
-    	public boolean equals(Matrix B) {
-       	    if (B.m != this.m)
-            	return false;
-            if (B.n != this.n)
-            	return false;
-            for (int i = 0; i < m; i++) {
-            	for (int j = 0; j < n; j++) {
-                    if (B.A[i][j] != this.A[i][j])
-                    	return false;
-            	}
-            }
-            return true;
-    	}
-
+		
 	public double[][] getArray() {
 	    return A;
 	}
