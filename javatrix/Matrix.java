@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.util.*;
 
 public class Matrix{
-	//variables
+	/* Variables */
 	private static double[][] A;
 	private static int m;
 	private static int n; 
@@ -22,6 +22,7 @@ public class Matrix{
 	    this.n = n;
 	    A = new double[m][n];	
 	}
+
 	/**
  	*Construct an m-by-n constant matrix
 	*@param m    Number of rows
@@ -38,6 +39,7 @@ public class Matrix{
 	   	}
 	    }
 	}
+	
 	/**
  	*Construct a matrix from a 2D array
 	*@param A    2D array of doubles
@@ -53,6 +55,7 @@ public class Matrix{
 	    }
 	    this.A=A;
 	}
+	
 	/**
  	*Construct a matrix quickly without checking arguments
 	*@param A    2D array of doubles
@@ -64,6 +67,7 @@ public class Matrix{
 	    this.m = m;
 	    this.n = n;
 	}
+	
 	/**
  	*Construct a matrix from 1D packed array
 	*@param vals    1D array of doubles, packed by columns
@@ -84,12 +88,24 @@ public class Matrix{
 	    }
 	}
 
-   	public static void print(int w, int d)
+   	/**
+	*Print the matrix to stdout. Line the elements up in columns with a Fortran-like 'Fw.d' style format.
+	*@param w	column width
+	*@param d	number of digits after the decimal
+	*/
+	public static void print(int w, int d)
    	{
             // w is column width, d is the # of digits after the decimal
             print(new PrintWriter(System.out, true), w, d);
    	}
-
+	
+	/**
+	*Print the matrix to the output stream. Line the elements up in columns with a Fortran-like 
+	* 'Fw.d' style format.
+	*@param output	output stream
+	*@param w	column width
+	*@param d	numbr of digits after the decimal
+	**/
    	public static void print(PrintWriter output, int w, int d) {
             DecimalFormat format = new DecimalFormat();
             format.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
@@ -100,10 +116,25 @@ public class Matrix{
             print(output,format,w+2);
    	}
 
-   	public static void print (NumberFormat format, int width) {
+	/**
+	*Print the matrix to stdout. Line up the elements up in columns. Use the format object, and right 
+	* justify within columns of width characters. Note that is the matrix is to be read back in, you probably 
+	* will want to use a NumberFormat that is set to US Locale.
+	*@param 	format	formatting object for individual elements
+	*@width		field width for each column
+   	*/
+	public static void print (NumberFormat format, int width) {
    	    print(new PrintWriter(System.out,true), format, width);
   	}
 
+	/**
+	*Print the matrix to the output stream. Line up the elements up in columns. Use the format object, and right 
+	* justify within columns of width characters. Note that is the matrix is to be read back in, you probably 
+	* will want to use a NumberFormat that is set to US Locale.
+	*@param output 		the output stream
+	*@param	format		formatting object to format matrix elements
+	*@param width		column width
+	*/
    	public static void print(PrintWriter output, NumberFormat format, int width) {
 	    output.println();
 	    for (int i = 0; i < m ; i++) {
@@ -119,7 +150,7 @@ public class Matrix{
 	    output.println();
    	}
 
-	
+
     	public boolean equals(Matrix B) {
        	    if (B.m != this.m)
             	return false;
