@@ -89,14 +89,33 @@ public class Matrix{
 	}
 
 	/*-----Get methods-----*/
+	/**
+	*Get a single element
+	*@param i	row index
+	*@param j	column index
+	*@returns A(i,j)
+	*/
 	public double get (int i, int j) {
 	    return A[i][j];
 	}
-
+	
+	/**
+	*Access the internal two-dimensional array
+	*@returns pointer to the 2D array of matrix elements
+	*/
 	public double[][] getArray() {
 	    return A;
 	}
 	
+	/**
+	*Get a submatrix
+	*@param i0	initial row index
+	*@param i1	final row index
+	*@param j0	initial column index
+	*@param j1	final column index
+	*@returns A(i0:i1, j0:j1)
+	*@exception ArrayIndexOutOfBoundsException - Submatrix indices
+	*/
 	public Matrix getMatrix(int i0, int i1, int j0, int j1) { 
 	    Matrix Z = new Matrix(i1-i0+1, j1-j0+1);
 	    double[][] B =Z.getArray();
@@ -113,6 +132,13 @@ public class Matrix{
 	    return Z;
 	}
 	
+	/**
+	*Get a submatrix 
+	*@param r	array of row indices
+	*@param c	array of column indices
+	*@returns A(r(:),c(:))
+	*@exception ArrayIndexOutOfBoundsException - Submatrix indices
+	*/
 	public Matrix getMatrix(int[] r, int[] c) {
 	    Matrix Z = new Matrix(r.length, c.length);
 	    double[][] B = Z.getArray();
@@ -129,6 +155,14 @@ public class Matrix{
 	    return Z;
 	} 
 
+	/**
+	*Get a submatrix
+	*@param i0	initial row index
+	*@param i1	final row index
+	*@param c	array of column indices
+	*@returns A(i0:i1,c(:))
+	*@exception ArrayIndexOutOfBoundsException - Submatrix indices
+	*/
 	public Matrix getMatrix(int i0, int i1, int[] c) {
 	    Matrix Z = new Matrix(i1-i0+1, c.length);
 	    double[][] B = Z.getArray();
@@ -144,7 +178,15 @@ public class Matrix{
 	    }
 	    return Z;
 	}
-
+	
+	/**
+	*Get a submatrix
+	*@param r	array of row indices
+	*@param j0	initial column index
+	*@param j1	final column index
+	*@returns A(r(:),j0:j1)
+	*@exception ArrayIndexOutOfBoundsException - Submatrix indices
+	*/
 	public Matrix getMatrix(int[] r, int j0, int j1) {
 	    Matrix Z = new Matrix(r.length, j1-j0+1);
 	    double[][] B = Z.getArray();
