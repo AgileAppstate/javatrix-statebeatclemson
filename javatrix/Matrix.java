@@ -6,13 +6,12 @@ import java.util.*;
 import java.lang.Object;
 
 public class Matrix{
-	/* Variables */
+	/*-----Variables-----*/
 	private static double[][] A;
 	private static int m;
 	private static int n; 
 
-	/* Constructors */
-
+	/*-----Constructors-----*/
 	/**
  	*Construct an m-by-n matrix of zeros
 	*@param m    Number of rows
@@ -89,110 +88,13 @@ public class Matrix{
 	    }
 	}
 
-   	/**
-	*Print the matrix to stdout. Line the elements up in columns with a Fortran-like 'Fw.d' style format.
-	*@param w	column width
-	*@param d	number of digits after the decimal
-	*/
-	public static void print(int w, int d)
-   	{
-            // w is column width, d is the # of digits after the decimal
-            print(new PrintWriter(System.out, true), w, d);
-   	}
-	
-	/**
-	*Print the matrix to the output stream. Line the elements up in columns with a Fortran-like 
-	* 'Fw.d' style format.
-	*@param output	output stream
-	*@param w	column width
-	*@param d	numbr of digits after the decimal
-	**/
-   	public static void print(PrintWriter output, int w, int d) {
-            DecimalFormat format = new DecimalFormat();
-            format.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
-            format.setMinimumIntegerDigits(1);
-            format.setMaximumFractionDigits(d);
-            format.setMinimumFractionDigits(d);
-            format.setGroupingUsed(false);
-            print(output,format,w+2);
-   	}
-
-	/**
-	*Print the matrix to stdout. Line up the elements up in columns. Use the format object, and right 
-	* justify within columns of width characters. Note that is the matrix is to be read back in, you probably 
-	* will want to use a NumberFormat that is set to US Locale.
-	*@param 	format	formatting object for individual elements
-	*@width		field width for each column
-   	*/
-	public static void print (NumberFormat format, int width) {
-   	    print(new PrintWriter(System.out,true), format, width);
-  	}
-
-	/**
-	*Print the matrix to the output stream. Line up the elements up in columns. Use the format object, and right 
-	* justify within columns of width characters. Note that is the matrix is to be read back in, you probably 
-	* will want to use a NumberFormat that is set to US Locale.
-	*@param output 		the output stream
-	*@param	format		formatting object to format matrix elements
-	*@param width		column width
-	*/
-   	public static void print(PrintWriter output, NumberFormat format, int width) {
-	    output.println();
-	    for (int i = 0; i < m ; i++) {
-	    	for (int j = 0; j < n; j++) {
-		    String s = format.format(A[i][j]);
-		    int padding = Math.max(1, width-s.length());
-			for (int k = 0; k <padding; k++)
-			    output.print(" ");
-		    output.print(s);
-		}
-		output.println();
-	    }
-	    output.println();
-   	}
-
-		
-	public double[][] getArray() {
-	    return A;
-	}
-	
-	public Matrix times(double s)
-	{
-	    Matrix Z = new Matrix(m,n);
-	    double[][] C = Z.getArray();
-	    for (int i=0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-		    C[i][j] = s * A[i][j];
-		}
-	    }
-	    return Z;			
-	}
-	
-	public Matrix times(Matrix B) { 
-	    if (B.m != n) {
-		throw new IllegalArgumentException("Matrix inner dimensions must agree.");
-	    }
-	    Matrix Z = new Matrix(m,B.n);
-	    double[][] C = Z.getArray();
-	    double[] BcolJ = new double[n];
-	    for (int j = 0; j < B.n; j++) {
-		for (int k = 0; k < n; k++) {
-		    BcolJ[k] = B.A[k][j];
-		}
-		for (int i = 0; i < m; i++) {
-		    double [] ArowI = A[i];
-		    double s = 0;
-		    for (int k = 0; k < n; k++) {
-			s += ArowI[k]*BcolJ[k];
-		    }
-		    C[i][j] = s;
-		}
-	    }
-	    return Z;
-	}
-	
+	/*-----Get methods-----*/
 	public double get (int i, int j) {
 	    return A[i][j];
+	}
+
+	public double[][] getArray() {
+	    return A;
 	}
 	
 	public Matrix getMatrix(int i0, int i1, int j0, int j1) { 
@@ -259,6 +161,8 @@ public class Matrix{
 	    return Z;
 	}
 
+	/*-----Set methods-----*/
+
 	public void set (int i, int j, double s) {
       	    A[i][j] = s;
    	}
@@ -314,5 +218,105 @@ public class Matrix{
          	throw new ArrayIndexOutOfBoundsException("Submatrix indices");
       	    }
    	}
+	
+	/*-----Print Methods-----*/
+   	/**
+	*Print the matrix to stdout. Line the elements up in columns with a Fortran-like 'Fw.d' style format.
+	*@param w	column width
+	*@param d	number of digits after the decimal
+	*/
+	public static void print(int w, int d)
+   	{
+            // w is column width, d is the # of digits after the decimal
+            print(new PrintWriter(System.out, true), w, d);
+   	}
+	
+	/**
+	*Print the matrix to the output stream. Line the elements up in columns with a Fortran-like 
+	* 'Fw.d' style format.
+	*@param output	output stream
+	*@param w	column width
+	*@param d	numbr of digits after the decimal
+	**/
+   	public static void print(PrintWriter output, int w, int d) {
+            DecimalFormat format = new DecimalFormat();
+            format.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
+            format.setMinimumIntegerDigits(1);
+            format.setMaximumFractionDigits(d);
+            format.setMinimumFractionDigits(d);
+            format.setGroupingUsed(false);
+            print(output,format,w+2);
+   	}
+
+	/**
+	*Print the matrix to stdout. Line up the elements up in columns. Use the format object, and right 
+	* justify within columns of width characters. Note that is the matrix is to be read back in, you probably 
+	* will want to use a NumberFormat that is set to US Locale.
+	*@param 	format	formatting object for individual elements
+	*@width		field width for each column
+   	*/
+	public static void print (NumberFormat format, int width) {
+   	    print(new PrintWriter(System.out,true), format, width);
+  	}
+
+	/**
+	*Print the matrix to the output stream. Line up the elements up in columns. Use the format object, and right 
+	* justify within columns of width characters. Note that is the matrix is to be read back in, you probably 
+	* will want to use a NumberFormat that is set to US Locale.
+	*@param output 		the output stream
+	*@param	format		formatting object to format matrix elements
+	*@param width		column width
+	*/
+   	public static void print(PrintWriter output, NumberFormat format, int width) {
+	    output.println();
+	    for (int i = 0; i < m ; i++) {
+	    	for (int j = 0; j < n; j++) {
+		    String s = format.format(A[i][j]);
+		    int padding = Math.max(1, width-s.length());
+			for (int k = 0; k <padding; k++)
+			    output.print(" ");
+		    output.print(s);
+		}
+		output.println();
+	    }
+	    output.println();
+   	}
+	
+	/*-----Times methods-----*/
+	
+	public Matrix times(double s)
+	{
+	    Matrix Z = new Matrix(m,n);
+	    double[][] C = Z.getArray();
+	    for (int i=0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+		    C[i][j] = s * A[i][j];
+		}
+	    }
+	    return Z;			
+	}
+	
+	public Matrix times(Matrix B) { 
+	    if (B.m != n) {
+		throw new IllegalArgumentException("Matrix inner dimensions must agree.");
+	    }
+	    Matrix Z = new Matrix(m,B.n);
+	    double[][] C = Z.getArray();
+	    double[] BcolJ = new double[n];
+	    for (int j = 0; j < B.n; j++) {
+		for (int k = 0; k < n; k++) {
+		    BcolJ[k] = B.A[k][j];
+		}
+		for (int i = 0; i < m; i++) {
+		    double [] ArowI = A[i];
+		    double s = 0;
+		    for (int k = 0; k < n; k++) {
+			s += ArowI[k]*BcolJ[k];
+		    }
+		    C[i][j] = s;
+		}
+	    }
+	    return Z;
+	}	
 
 }
