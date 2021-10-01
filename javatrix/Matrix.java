@@ -9,20 +9,6 @@ public class Matrix{
 	private static double[][] A;
 	private static int m;
 	private static int n; 
-    
-    public boolean equals(Matrix B) {
-        if (B.m != this.m)
-            return false;
-        if (B.n != this.n)
-            return false;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (B.A[i][j] != this.A[i][j])
-                    return false;
-            }
-        }
-        return true;
-    }
 
 	/* Constructors */
 
@@ -98,30 +84,30 @@ public class Matrix{
 	    }
 	}
 
-   public static void print(int w, int d)
-   {
-        // w is column width, d is the # of digits after the decimal
-        print(new PrintWriter(System.out, true), w, d);
-   }
+   	public static void print(int w, int d)
+   	{
+            // w is column width, d is the # of digits after the decimal
+            print(new PrintWriter(System.out, true), w, d);
+   	}
 
-   public static void print(PrintWriter output, int w, int d) {
-        DecimalFormat format = new DecimalFormat();
-        format.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
-        format.setMinimumIntegerDigits(1);
-        format.setMaximumFractionDigits(d);
-        format.setMinimumFractionDigits(d);
-        format.setGroupingUsed(false);
-        print(output,format,w+2);
-   }
+   	public static void print(PrintWriter output, int w, int d) {
+            DecimalFormat format = new DecimalFormat();
+            format.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
+            format.setMinimumIntegerDigits(1);
+            format.setMaximumFractionDigits(d);
+            format.setMinimumFractionDigits(d);
+            format.setGroupingUsed(false);
+            print(output,format,w+2);
+   	}
 
-   public static void print (NumberFormat format, int width) {
-   	print(new PrintWriter(System.out,true), format, width);
-   }
+   	public static void print (NumberFormat format, int width) {
+   	    print(new PrintWriter(System.out,true), format, width);
+  	}
 
-   public static void print(PrintWriter output, NumberFormat format, int width) {
-	output.println();
-	for (int i = 0; i < m ; i++) {
-		for (int j = 0; j < n; j++) {
+   	public static void print(PrintWriter output, NumberFormat format, int width) {
+	    output.println();
+	    for (int i = 0; i < m ; i++) {
+	    	for (int j = 0; j < n; j++) {
 		    String s = format.format(A[i][j]);
 		    int padding = Math.max(1, width-s.length());
 			for (int k = 0; k <padding; k++)
@@ -132,6 +118,21 @@ public class Matrix{
 	    }
 	    output.println();
    	}
+
+	
+    	public boolean equals(Matrix B) {
+       	    if (B.m != this.m)
+            	return false;
+            if (B.n != this.n)
+            	return false;
+            for (int i = 0; i < m; i++) {
+            	for (int j = 0; j < n; j++) {
+                    if (B.A[i][j] != this.A[i][j])
+                    	return false;
+            	}
+            }
+            return true;
+    	}
 
 	public double[][] getArray() {
 	    return A;
