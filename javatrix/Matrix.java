@@ -361,7 +361,11 @@ public class Matrix{
    	}
 	
 	/*-----Times methods-----*/
-	
+	/**
+	*Multiply a matrix by a scalar, C=s*A
+	*@param s	scalar
+	*@returns s*A
+	*/
 	public Matrix times(double s)
 	{
 	    Matrix Z = new Matrix(m,n);
@@ -374,6 +378,11 @@ public class Matrix{
 	    return Z;			
 	}
 	
+	/**
+	*Linear algebraic matrix multiplication, A*B
+	*@param B	another matrix
+	*@returns Matrix product, A*B
+	*@exception	IllegalArgumentException("Matrix inner dimensions must agree")
 	public Matrix times(Matrix B) { 
 	    if (B.m != n) {
 		throw new IllegalArgumentException("Matrix inner dimensions must agree.");
