@@ -204,11 +204,24 @@ public class Matrix{
 	}
 
 	/*-----Set methods-----*/
-
+	/**Set a single element
+	*@param i	row index
+	*@param j	column index
+	*@param s	A(i,j)
+	*@exception	ArrayIndexOutOfBoundsException
 	public void set (int i, int j, double s) {
       	    A[i][j] = s;
    	}
 	
+	/**
+	*Set a submatrix
+	*@param i0	initial row index
+	*@param i1	final row index
+	*@param j0	initial column index
+	*@param j1	final column index
+	*@param Z	A(i0:i1, j0:j1)
+	*@exception ArrayIndexOutOfBoundsException - Submatrix indices
+	*/
 	public void setMatrix (int i0, int i1, int j0, int j1, Matrix Z) {
       	    try {
          	for (int i = i0; i <= i1; i++) {
@@ -221,7 +234,14 @@ public class Matrix{
          	throw new ArrayIndexOutOfBoundsException("Submatrix indices");
       	    }
    	}
-	 
+	
+	/**
+	*Set a submatrix
+	*@param r	Array of row indices
+	*@param c	Array of column indices
+	*@param Z	A(r(:),c(:))
+	*@exception	ArrayIndexOutOfBoundsException - Submatrix indices
+	*/
 	public void setMatrix (int[] r, int[] c, Matrix Z) {
       	    try {
          	for (int i = 0; i < r.length; i++) {
@@ -235,6 +255,14 @@ public class Matrix{
       	    }
    	}
 
+	/**
+	*Set a submatrix
+	*@param r	Array of row indices
+	*@param j0	initial column index
+	*@param j1	final column index
+	*@param Z	A(r(:), j0:j1)
+	*@exception	ArrayIndexOutOfBoundsException - Submatrix indices
+	*/
 	public void setMatrix(int[] r, int j0, int j1, Matrix Z) {
 	    try {
          	for (int i = 0; i < r.length; i++) {
@@ -248,6 +276,14 @@ public class Matrix{
      	    }
 	}
 
+	/**
+	*Set a submatrix
+	*@param i0	initial row index
+	*@param i1	final row index
+	*@param c	Array of column indices
+	*@param Z	A(i0:i1, c(:))
+	*@exception	ArrayIndexOutOfBoundsException - Submatrix indices
+	*/
 	public void setMatrix (int i0, int i1, int[] c, Matrix X) {
       	    try {
          	for (int i = i0; i <= i1; i++) {
