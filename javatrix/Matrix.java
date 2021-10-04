@@ -7,9 +7,9 @@ import java.lang.Object;
 
 public class Matrix{
 	/*-----Variables-----*/
-	private static double[][] A;
-	private static int m;
-	private static int n; 
+	private double[][] A;
+	private int m;
+	private int n; 
 
 	/*-----Constructors-----*/
 	/**
@@ -93,7 +93,7 @@ public class Matrix{
 	*Get a single element
 	*@param i	row index
 	*@param j	column index
-	*@returns A(i,j)
+	*@return A(i,j)
 	*/
 	public double get (int i, int j) {
 	    return A[i][j];
@@ -304,7 +304,7 @@ public class Matrix{
 	*@param w	column width
 	*@param d	number of digits after the decimal
 	*/
-	public static void print(int w, int d)
+	public void print(int w, int d)
    	{
             // w is column width, d is the # of digits after the decimal
             print(new PrintWriter(System.out, true), w, d);
@@ -317,7 +317,7 @@ public class Matrix{
 	*@param w	column width
 	*@param d	numbr of digits after the decimal
 	**/
-   	public static void print(PrintWriter output, int w, int d) {
+   	public void print(PrintWriter output, int w, int d) {
             DecimalFormat format = new DecimalFormat();
             format.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.US));
             format.setMinimumIntegerDigits(1);
@@ -334,7 +334,7 @@ public class Matrix{
 	*@param 	format	formatting object for individual elements
 	*@param 	width		field width for each column
    	*/
-	public static void print (NumberFormat format, int width) {
+	public void print (NumberFormat format, int width) {
    	    print(new PrintWriter(System.out,true), format, width);
   	}
 
@@ -346,7 +346,7 @@ public class Matrix{
 	*@param	format		formatting object to format matrix elements
 	*@param width		column width
 	*/
-   	public static void print(PrintWriter output, NumberFormat format, int width) {
+   	public void print(PrintWriter output, NumberFormat format, int width) {
 	    output.println();
 	    for (int i = 0; i < m ; i++) {
 	    	for (int j = 0; j < n; j++) {
