@@ -113,7 +113,7 @@ public class Matrix{
 	*@param i1	final row index
 	*@param j0	initial column index
 	*@param j1	final column index
-	*@returns A(i0:i1, j0:j1)
+	*@return A(i0:i1, j0:j1)
 	*@exception ArrayIndexOutOfBoundsException - Submatrix indices
 	*/
 	public Matrix getMatrix(int i0, int i1, int j0, int j1) { 
@@ -136,7 +136,7 @@ public class Matrix{
 	*Get a submatrix 
 	*@param r	array of row indices
 	*@param c	array of column indices
-	*@returns A(r(:),c(:))
+	*@return A(r(:),c(:))
 	*@exception ArrayIndexOutOfBoundsException - Submatrix indices
 	*/
 	public Matrix getMatrix(int[] r, int[] c) {
@@ -160,7 +160,7 @@ public class Matrix{
 	*@param i0	initial row index
 	*@param i1	final row index
 	*@param c	array of column indices
-	*@returns A(i0:i1,c(:))
+	*@return A(i0:i1,c(:))
 	*@exception ArrayIndexOutOfBoundsException - Submatrix indices
 	*/
 	public Matrix getMatrix(int i0, int i1, int[] c) {
@@ -184,7 +184,7 @@ public class Matrix{
 	*@param r	array of row indices
 	*@param j0	initial column index
 	*@param j1	final column index
-	*@returns A(r(:),j0:j1)
+	*@return A(r(:),j0:j1)
 	*@exception ArrayIndexOutOfBoundsException - Submatrix indices
 	*/
 	public Matrix getMatrix(int[] r, int j0, int j1) {
@@ -332,7 +332,7 @@ public class Matrix{
 	* justify within columns of width characters. Note that is the matrix is to be read back in, you probably 
 	* will want to use a NumberFormat that is set to US Locale.
 	*@param 	format	formatting object for individual elements
-	*@width		field width for each column
+	*@param 	width		field width for each column
    	*/
 	public static void print (NumberFormat format, int width) {
    	    print(new PrintWriter(System.out,true), format, width);
@@ -365,7 +365,7 @@ public class Matrix{
 	/**
 	*Multiply a matrix by a scalar, C=s*A
 	*@param s	scalar
-	*@returns s*A
+	*@return s*A
 	*/
 	public Matrix times(double s)
 	{
@@ -382,7 +382,7 @@ public class Matrix{
 	/**
 	*Linear algebraic matrix multiplication, A*B
 	*@param B	another matrix
-	*@returns Matrix product, A*B
+	*@return Matrix product, A*B
 	*@exception	IllegalArgumentException("Matrix inner dimensions must agree")
 	*/
 	public Matrix times(Matrix B) { 
