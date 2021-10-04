@@ -36,13 +36,15 @@ help:
 #etc.
 #Essential that command lines start with single TAB character
 
-compile: javatrix/Matrix.java javatrix/MatrixTest.java $(JUNIT5_JAR)
+compile: javatrix/Matrix.java javatrix/MatrixTest.java Testtrix.java $(JUNIT5_JAR)
 	javac -cp .:$(JUNIT5_JAR) javatrix/MatrixTest.java
 	javac javatrix/Matrix.java
+	javac Testtrix.java
 
 clean:
 	rm -f *~
-	rm -f Matrix*.class
+	rm javatrix/*.class
+	rm *.class
 
 test: $(JUNIT5_JAR)
 	java -cp .:$(JUNIT5_JAR) $(JUNIT5_RUNNER) --scan-class-path 

@@ -19,7 +19,16 @@ public class MatrixTest {
         Matrix B = new Matrix(3, 3);
 	    B.print(9, 4);
 	    // Check results
-	    if (A.equals(B))
+	    boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (A.get(i, j) != B.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
 	        System.err.println("Result: PASSED\n");
 	    else
 	        System.out.println("Result: ERROR\n");
@@ -29,7 +38,16 @@ public class MatrixTest {
     public void testConst2() {
         Matrix A = new Matrix(zeros);
         Matrix B = new Matrix(3, 3, 0);
-        if (A.equals(B))
+        boolean eq = true;
+        for (int i = 0; i< 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (A.get(i, j) != B.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
             System.err.println("Result: PASSED\n");
         else
             System.err.println("Result: ERROR\n");
@@ -39,7 +57,16 @@ public class MatrixTest {
     public void testConst3() {
         Matrix A = new Matrix(zeros);
         Matrix B = new Matrix(zeros, 3, 3);
-        if (A.equals(B))
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j< 3; j++)
+            {
+                if (A.get(i, j) != B.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
             System.err.println("Result: PASSED\n");
         else
             System.err.println("Result: ERROR\n");
@@ -50,7 +77,16 @@ public class MatrixTest {
         Matrix A = new Matrix(zeros);
         double[] z4 = {0., 0., 0., 0., 0., 0., 0., 0., 0.};
         Matrix B = new Matrix(z4, 3);
-        if (A.equals(B))
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (A.get(i, j) != B.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
             System.err.println("Result: PASSED\n");
         else
             System.err.println("Result: ERROR\n");
@@ -64,8 +100,9 @@ public class MatrixTest {
         format.setMaximumFractionDigits(4);
         format.setMinimumFractionDigits(4);
         format.setGroupingUsed(false);
-	String expected = "\n";
+	    String expected = "\n";
         double[][] A = {{0., 0., 0.}, {0., 0., 0.}, {0., 0., 0.}};
+        Matrix m = new Matrix(A);
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 String s = format.format(A[i][j]);
@@ -88,7 +125,7 @@ public class MatrixTest {
 
 	// Conduct test of main method
 	try {
-	    Matrix.print(9, 4);
+	    m.print(9, 4);
 	}
 	catch (Exception e) {
 	    testFailed = "Exception thrown unexpectedly";
