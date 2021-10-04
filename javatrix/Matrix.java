@@ -209,6 +209,7 @@ public class Matrix{
 	*@param j	column index
 	*@param s	A(i,j)
 	*@exception	ArrayIndexOutOfBoundsException
+	*/
 	public void set (int i, int j, double s) {
       	    A[i][j] = s;
    	}
@@ -383,6 +384,7 @@ public class Matrix{
 	*@param B	another matrix
 	*@returns Matrix product, A*B
 	*@exception	IllegalArgumentException("Matrix inner dimensions must agree")
+	*/
 	public Matrix times(Matrix B) { 
 	    if (B.m != n) {
 		throw new IllegalArgumentException("Matrix inner dimensions must agree.");
