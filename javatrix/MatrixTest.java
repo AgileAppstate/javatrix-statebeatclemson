@@ -29,7 +29,7 @@ public class MatrixTest {
             }
         }
         if (eq)
-	        System.err.println("Result: PASSED\n");
+	        System.err.println("Test Constructor 1: PASSED\n");
 	    else
 	        System.out.println("Result: ERROR\n");
     }
@@ -48,7 +48,7 @@ public class MatrixTest {
             }
         }
         if (eq)
-            System.err.println("Result: PASSED\n");
+            System.err.println("Test Constructor 2: PASSED\n");
         else
             System.err.println("Result: ERROR\n");
     }
@@ -67,7 +67,7 @@ public class MatrixTest {
             }
         }
         if (eq)
-            System.err.println("Result: PASSED\n");
+            System.err.println("Test Constructor 3: PASSED\n");
         else
             System.err.println("Result: ERROR\n");
     }
@@ -87,7 +87,7 @@ public class MatrixTest {
             }
         }
         if (eq)
-            System.err.println("Result: PASSED\n");
+            System.err.println("Test Constructor 4: PASSED\n");
         else
             System.err.println("Result: ERROR\n");
     }
@@ -158,7 +158,7 @@ public class MatrixTest {
 	}
 
 	// Show results
-	System.err.println("\nTest: \"java RazzleDazzle 1\" ");
+	System.err.println("\nTest: \"Print\" ");
 	if (testFailed != null) {
 	    System.err.println("Result: ERROR");
 	    System.err.println("Feedback: " + testFailed);
@@ -169,4 +169,45 @@ public class MatrixTest {
 	assertEquals(testFailed, null);
 
     }
+
+    @Test
+    public void testIdentity() {
+    	double[][] A = {{1., 0., 0.}, {0., 1., 0.}, {0., 0., 1.}};
+        Matrix m = new Matrix(A);
+	    Matrix B = Matrix.identity(3);
+	    boolean eq = true;
+        for (int i = 0; i< 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (m.get(i, j) != B.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Identity 1: PASSED\n");
+        else
+            System.err.println("Result: ERROR\n");
+    }
+
+    @Test
+    public void testIdentity2() {
+        double[][] A = {{1., 0., 0.}, {1., 1., 0.}, {0., 0., 1.}};
+        Matrix m = new Matrix(A);
+        Matrix B = Matrix.identity(3);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (m.get(i, j) != B.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Result: ERROR, Matrixes should not be equal\n");
+        else
+            System.err.println("Test Not Identity: PASSED\n");
+    }
+
 }

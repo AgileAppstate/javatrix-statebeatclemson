@@ -408,4 +408,14 @@ public class Matrix{
 	    return Z;
 	}	
 
+    /**
+     * Create and Return n-by-n identity matrix
+     * @param n int dimension of the matrix
+    */
+    public static Matrix identity(int n) {
+        Matrix I = new Matrix(n, n);
+        for (int i = 0; i < n; i++)
+            I.A[i][i] = 1;
+        return I;
+    }
 }
