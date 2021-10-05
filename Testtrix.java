@@ -23,15 +23,16 @@ public class Testtrix {
 		System.out.print("Enter number of rows: ");
 		r = sc.nextInt();
 		sc.nextLine();
-
+			
 		System.out.print("Enter number of columns: ");
 		r = sc.nextInt();
 		sc.nextLine();
 
 		Matrix A = new Matrix(r, c, 1.);
 		
+		System.out.println(A.get(0,0));
 		System.out.println("Your matrix: ");
-		A.print(9,4);
+		A.print(3,2);
 		break;
 
 	default:
