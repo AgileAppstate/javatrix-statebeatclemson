@@ -17,6 +17,7 @@ public class Testtrix {
             System.out.println("2. Edit matrix");
 	    System.out.println("3. Print matrix");
 	    System.out.println("4. Exit");	
+	    System.out.println("------------------ ");
 	    choice = sc.nextInt();
 	    sc.nextLine();
 	    switch (choice) {
@@ -38,7 +39,12 @@ public class Testtrix {
 			System.out.println("Your matrix: ");
 			A.print(9,2);
 			break;
-		case 2: 
+		case 2:
+			if (A == null) {
+			    System.out.println("Please create a matrix first.");
+			    break;
+			}
+ 
 			int index = 0;
 			int i = 0;
 			int j = 0;
@@ -46,11 +52,11 @@ public class Testtrix {
 			String cont = "";
 			boolean again = true;
 			
-			while(again) {
 			    System.out.print("Which matrix do you want to edit? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
     			    index = sc.nextInt();
 			    sc.nextLine();
-			
+
+			while(again) {
 			    A = mats.get(index);
 			    System.out.println("Chosen matrix: ");
 			    A.print(6,2);
@@ -103,12 +109,6 @@ public class Testtrix {
      	    		System.out.println("Invalid selection");
       	    		break; // This break is not really necessary
     	    }
-	    System.out.println("Continue? y or n:");
-	    String letter = sc.nextLine();
-	    if (letter.equalsIgnoreCase("y")) {
-		runAgain = true;
-	    }
-	    else runAgain = false;	
 	}
 
 	sc.close();
