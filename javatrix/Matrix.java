@@ -457,4 +457,18 @@ public class Matrix{
         return C;
     }
 
+    /**
+     * Create and return the transpose of the calling Matrix
+    */
+    public Matrix transpose() {
+        Matrix B = new Matrix(n, m);
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                B.A[j][i] = this.A[i][j];
+            }
+        }
+        return B;
+    }
 }
