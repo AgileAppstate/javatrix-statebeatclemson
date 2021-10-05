@@ -7,12 +7,15 @@ public class Testtrix {
         Matrix A = new Matrix(vals);
         Matrix x = new Matrix(3, 1, 1.);
         Matrix b = A.times(x);
+        Matrix T = A.transpose();
 
         A.print(9,4);
         System.out.println("x");
         x.print(9,4);
         System.out.println("=");
         b.print(9,4);
+        System.out.println("T = ");
+        T.print(9, 4);
 
 	/* b should be {6, 15, 24} */
    }

@@ -298,4 +298,27 @@ public class MatrixTest {
             System.err.println("RESULT: FAILED. Sum matrix contains incorrect values\n");
     }
 
+    @Test
+    public void testTrans() {
+        double[][] A = {{1., 2., 3.}, {4., 5., 6.}, {7., 8., 9.}};
+        double[][] B = {{1., 4., 7.}, {2., 5., 8.}, {3., 6., 9.}};
+        Matrix m1 = new Matrix(A);
+        Matrix correct = new Matrix(B);
+        Matrix res = m1.transpose();
+	    boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Transpose: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Sum matrix contains incorrect values\n");
+         
+    }
+
 }
