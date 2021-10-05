@@ -437,4 +437,24 @@ public class Matrix{
         }
         return C;
     }
+
+	/**
+     * Create and return Matrix C
+     * @param B another Matrix
+     * @return matrix sub, A - B
+     */
+    public Matrix sub(Matrix B) {
+        if (this.m != B.m || this.n != B.n)
+            throw new RuntimeException("Illegal matrix dimensions");
+        Matrix C = new Matrix(m, n);
+        for (int i = 0; i < m; i++) 
+        {
+            for (int j = 0; j < n; j++)
+            {
+                C.A[i][j] = this.A[i][j] - B.A[i][j];
+            }
+        }
+        return C;
+    }
+
 }
