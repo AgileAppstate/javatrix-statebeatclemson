@@ -254,5 +254,48 @@ public class MatrixTest {
             System.err.println("RESULT: FAILED. Sum matrix contains incorrect values\n");
     }
 
+	@Test
+    public void testSub1() {
+        Matrix correct = new Matrix(3, 3);
+        Matrix m1 = new Matrix(3, 3, 1);
+        Matrix m2 = new Matrix(3, 3, 1);
+        Matrix res = m1.sub(m2);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Sub1: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Matrix doesn't contain expected values\n");
+    }
+
+    @Test
+	public void testSub2() {
+        double[][] A = {{5., 1., 2.}, {7., 4., 2.}, {3., 6., 2.}};
+        double[][] B = {{4., 0., 1.}, {6., 3., 1.}, {2., 5., 1.}};
+        Matrix m1 = new Matrix(A);
+        Matrix m2 = new Matrix(B);
+        Matrix res = m1.sub(m2);
+        Matrix correct = new Matrix(3, 3, 1);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Sub2: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Sum matrix contains incorrect values\n");
+    }
 
 }
