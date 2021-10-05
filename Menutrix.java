@@ -1,7 +1,7 @@
 import javatrix.*;
 import java.util.*;
 
-public class Testtrix {
+public class Menutrix {
     public static void main(String[] args) {
 		
         //menu to choose functionality
