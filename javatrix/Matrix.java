@@ -99,6 +99,14 @@ public class Matrix{
 	    return A[i][j];
 	}
 	
+	public int getRowDimension() {
+	    return m;
+	}
+
+	public int getColumnDimension() {
+	    return n;
+	}
+	
 	/**
 	*Access the internal two-dimensional array
 	*@returns pointer to the 2D array of matrix elements

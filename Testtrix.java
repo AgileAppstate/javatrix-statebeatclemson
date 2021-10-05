@@ -9,11 +9,11 @@ public class Testtrix {
 	int choice = 0;
 	boolean runAgain = true;
 	Matrix A = null;
-	ArrayList<Matrix> arr = new ArrayList<Matrix>();
+	ArrayList<Matrix> mats = new ArrayList<Matrix>();
 
 	while(runAgain) {
 	    System.out.println("---choose option---");
-     	    System.out.println("1. create matrix");
+     	    System.out.println("1. Create matrix");
             System.out.println("2. Edit matrix");
 	    System.out.println("3. Print matrix");
 	    System.out.println("4. Exit");	
@@ -24,7 +24,6 @@ public class Testtrix {
 		case 1:
 			int r = 0;
 			int c = 0;
-			String n = "";
 			System.out.print("Enter number of rows: ");
 			r = sc.nextInt();
 			sc.nextLine();
@@ -32,14 +31,55 @@ public class Testtrix {
 			System.out.print("Enter number of columns: ");
 			c = sc.nextInt();
 			sc.nextLine();
-			
+
 			A = new Matrix(r, c);
-			arr.add(A);
-			
+			mats.add(A);
+				
 			System.out.println("Your matrix: ");
 			A.print(9,2);
 			break;
 		case 2: 
+			int index = 0;
+			int i = 0;
+			int j = 0;
+			double s = 0;
+			String cont = "";
+			boolean again = true;
+			
+			while(again) {
+			    System.out.print("Which matrix do you want to edit? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    			    index = sc.nextInt();
+			    sc.nextLine();
+			
+			    A = mats.get(index);
+			    System.out.println("Chosen matrix: ");
+			    A.print(6,2);
+			
+			    System.out.print("Enter row index to edit " + (A.getRowDimension() - A.getRowDimension()) + "-" + (A.getRowDimension()-1) + ": ");
+			    i = sc.nextInt();
+			    sc.nextLine();
+			
+			    System.out.print("Enter column index to edit " + (A.getColumnDimension()- A.getColumnDimension()) + "-" + (A.getColumnDimension() - 1) + ": ");
+			    j = sc.nextInt();
+			    sc.nextLine();
+
+			    System.out.print("Enter value: ");
+			    s = sc.nextDouble();
+			    sc.nextLine();
+			
+			    A.set(i, j, s);
+
+			    System.out.print("Continue editing? (y/n): ");
+			    cont = sc.next();
+			    sc.nextLine();
+	
+			    if(cont.equalsIgnoreCase("y")) {
+			    	again = true;
+			    }
+			    else again = false;	
+			}
+			System.out.println("Your new matrix: ");
+			A.print(6,2); 
 			break;
 		case 3:
 			if (A == null) {
@@ -47,8 +87,13 @@ public class Testtrix {
 			    break;
 			}
 			else {
-			    System.out.println("Your matrix");
-			    A.print(9,2);
+			    
+			    System.out.println("Your stored matrices: ");
+			    for (Matrix m : mats) {				
+				System.out.println("--------------------");
+				m.print(6,2);
+				System.out.println("--------------------");
+			    }
 			    break;
 			}
 		case 4:
