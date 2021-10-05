@@ -17,27 +17,100 @@ public class Testtrix {
             System.out.println("2. Edit matrix");
 	    System.out.println("3. Print matrix");
 	    System.out.println("4. Exit");	
-	    System.out.println("------------------ ");
+	    System.out.println("-------------------");
 	    choice = sc.nextInt();
 	    sc.nextLine();
 	    switch (choice) {
 	    	//create matrix
 		case 1:
-			int r = 0;
-			int c = 0;
-			System.out.print("Enter number of rows: ");
-			r = sc.nextInt();
-			sc.nextLine();
-			
-			System.out.print("Enter number of columns: ");
-			c = sc.nextInt();
+			System.out.println("---choose option---");
+     	    		System.out.println("1. Create matrix of zeros");
+            		System.out.println("2. Create single-value matrix");
+	    		System.out.println("3. Create matrix from 2D array");
+	    		System.out.println("4. Create matrix from 1D packed array");
+			System.out.println("5. Create identity matrix");	
+	   		System.out.println("-------------------");
+			choice = sc.nextInt();
 			sc.nextLine();
 
-			A = new Matrix(r, c);
-			mats.add(A);
+			switch(choice) {
+				case 1:
+					int r = 0;
+					int c = 0;
+					System.out.print("Enter number of rows: ");
+					r = sc.nextInt();
+					sc.nextLine();
+					
+					System.out.print("Enter number of columns: ");
+					c = sc.nextInt();
+					sc.nextLine();
+
+					A = new Matrix(r, c);
+					mats.add(A);
 				
-			System.out.println("Your matrix: ");
-			A.print(9,2);
+					System.out.println("Your matrix: ");
+					A.print(9,2);
+					break;
+				case 2: 
+					double v = 0.0;
+					System.out.print("Enter number of rows: ");
+					r = sc.nextInt();
+					sc.nextLine();
+					
+					System.out.print("Enter number of columns: ");
+					c = sc.nextInt();
+					sc.nextLine();
+
+					System.out.print("Enter value: ");
+					v = sc.nextDouble();
+					sc.nextLine();
+
+					A = new Matrix(r, c, v);
+					mats.add(A);
+				
+					System.out.println("Your matrix: ");
+					A.print(9,2);
+					break;
+				case 3: 
+					System.out.print("Enter number of rows: ");
+					r = sc.nextInt();
+					sc.nextLine();
+					
+					System.out.print("Enter number of columns: ");
+					c = sc.nextInt();
+					sc.nextLine();
+					
+					double[][] vals = new double[r][c];
+					
+					for (int row = 0; row < vals.length; row++) {
+    					    for (int col = 0; col < vals[row].length; col++) {
+					        System.out.print("Enter value for row " + (row+1) + ", column " + (col+1) + ": "); 
+						vals[row][col] = sc.nextDouble();
+						sc.nextLine();
+    					    }
+ 					}
+					A = new Matrix(vals);
+					mats.add(A);
+					break;
+				case 4:
+					System.out.print("Enter number of rows: ");
+					r = sc.nextInt();
+					sc.nextLine();
+ 					
+					double[] vals1 = new double[r];
+					for (int row = 0; row < vals1.length; row++) {
+					    System.out.print("Enter value for row " + (row+1) + ": ");
+					    vals1[row] = sc.nextDouble();
+					    sc.nextLine();
+					}
+					A = new Matrix(vals1, r);
+					mats.add(A);
+					break;
+				default:
+					System.out.println("Invalid selection");
+      			    		break; // This break is not really necessary
+	
+			}
 			break;
 		case 2:
 			if (A == null) {
