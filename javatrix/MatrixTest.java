@@ -210,4 +210,49 @@ public class MatrixTest {
             System.err.println("Test Not Identity: PASSED\n");
     }
 
+    @Test
+    public void testAdd1() {
+        double[][] A = {{2., 2., 2.}, {2., 2., 2.}, {2., 2., 2.}};
+        Matrix correct = new Matrix(A);
+        Matrix m1 = new Matrix(3, 3, 1);
+        Matrix m2 = new Matrix(3, 3, 1);
+        Matrix res = m1.add(m2);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Add1: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Matrix doesn't contain expected values\n");
+    }
+
+    @Test
+	public void testAdd2() {
+        double[][] A = {{2., 2., 2.}, {2., 2., 2.}, {2., 2., 2.}};
+        Matrix correct = new Matrix(A);
+        Matrix m1 = new Matrix(3, 3, 1);
+        Matrix m2 = new Matrix(3, 3, 2);
+        Matrix res = m1.add(m2);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (!eq)
+            System.err.println("Test Add2: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Sum matrix contains incorrect values\n");
+    }
+
+
 }

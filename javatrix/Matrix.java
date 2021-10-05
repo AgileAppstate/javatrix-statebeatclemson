@@ -95,7 +95,7 @@ public class Matrix{
 	*@param j	column index
 	*@return A(i,j)
 	*/
-	public double get (int i, int j) {
+	public double get(int i, int j) {
 	    return A[i][j];
 	}
 	
@@ -417,5 +417,24 @@ public class Matrix{
         for (int i = 0; i < n; i++)
             I.A[i][i] = 1;
         return I;
+    }
+
+    /**
+     * Create and return Matrix C
+     * @param B another Matrix
+     * @return matrix sum, A + B
+     */
+    public Matrix add(Matrix B) {
+        if (this.m != B.m || this.n != B.n)
+            throw new RuntimeException("Illegal matrix dimensions");
+        Matrix C = new Matrix(m, n);
+        for (int i = 0; i < m; i++) 
+        {
+            for (int j = 0; j < n; j++)
+            {
+                C.A[i][j] = this.A[i][j] + B.A[i][j];
+            }
+        }
+        return C;
     }
 }
