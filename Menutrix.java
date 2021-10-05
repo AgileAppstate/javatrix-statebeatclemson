@@ -91,6 +91,10 @@ public class Menutrix {
  					}
 					A = new Matrix(vals);
 					mats.add(A);
+
+					System.out.println("Your matrix: ");
+					A.print(9,2);
+
 					break;
 				case 4:
 					System.out.print("Enter number of rows: ");
@@ -105,6 +109,20 @@ public class Menutrix {
 					}
 					A = new Matrix(vals1, r);
 					mats.add(A);
+					System.out.println("Your matrix: ");
+					A.print(9,2);
+
+					break;
+				case 5: 
+					System.out.print("Enter dimension of identity matrix: ");
+					r = sc.nextInt();
+					sc.nextLine();
+					A = Matrix.identity(r);
+					mats.add(A);
+
+					System.out.println("Your matrix: ");
+					A.print(9,2);
+
 					break;
 				default:
 					System.out.println("Invalid selection");
