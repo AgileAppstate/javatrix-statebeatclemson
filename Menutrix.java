@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Menutrix {
     public static void main(String[] args) {
-		
+	//renamed to menutrix		
         //menu to choose functionality
 	Scanner sc = new Scanner(System.in);
 	int choice = 0;
