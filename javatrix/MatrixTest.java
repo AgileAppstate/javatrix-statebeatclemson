@@ -29,7 +29,7 @@ public class MatrixTest {
             }
         }
         if (eq)
-	        System.err.println("Result: PASSED\n");
+	        System.err.println("Test Constructor 1: PASSED\n");
 	    else
 	        System.out.println("Result: ERROR\n");
     }
@@ -48,7 +48,7 @@ public class MatrixTest {
             }
         }
         if (eq)
-            System.err.println("Result: PASSED\n");
+            System.err.println("Test Constructor 2: PASSED\n");
         else
             System.err.println("Result: ERROR\n");
     }
@@ -67,7 +67,7 @@ public class MatrixTest {
             }
         }
         if (eq)
-            System.err.println("Result: PASSED\n");
+            System.err.println("Test Constructor 3: PASSED\n");
         else
             System.err.println("Result: ERROR\n");
     }
@@ -87,7 +87,7 @@ public class MatrixTest {
             }
         }
         if (eq)
-            System.err.println("Result: PASSED\n");
+            System.err.println("Test Constructor 4: PASSED\n");
         else
             System.err.println("Result: ERROR\n");
     }
@@ -158,7 +158,7 @@ public class MatrixTest {
 	}
 
 	// Show results
-	System.err.println("\nTest: \"java RazzleDazzle 1\" ");
+	System.err.println("\nTest: \"Print\" ");
 	if (testFailed != null) {
 	    System.err.println("Result: ERROR");
 	    System.err.println("Feedback: " + testFailed);
@@ -169,4 +169,156 @@ public class MatrixTest {
 	assertEquals(testFailed, null);
 
     }
+
+    @Test
+    public void testIdentity() {
+    	double[][] A = {{1., 0., 0.}, {0., 1., 0.}, {0., 0., 1.}};
+        Matrix m = new Matrix(A);
+	    Matrix B = Matrix.identity(3);
+	    boolean eq = true;
+        for (int i = 0; i< 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (m.get(i, j) != B.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Identity 1: PASSED\n");
+        else
+            System.err.println("Result: ERROR\n");
+    }
+
+    @Test
+    public void testIdentity2() {
+        double[][] A = {{1., 0., 0.}, {1., 1., 0.}, {0., 0., 1.}};
+        Matrix m = new Matrix(A);
+        Matrix B = Matrix.identity(3);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (m.get(i, j) != B.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Result: ERROR, Matrixes should not be equal\n");
+        else
+            System.err.println("Test Not Identity: PASSED\n");
+    }
+
+    @Test
+    public void testAdd1() {
+        double[][] A = {{2., 2., 2.}, {2., 2., 2.}, {2., 2., 2.}};
+        Matrix correct = new Matrix(A);
+        Matrix m1 = new Matrix(3, 3, 1);
+        Matrix m2 = new Matrix(3, 3, 1);
+        Matrix res = m1.add(m2);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Add1: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Matrix doesn't contain expected values\n");
+    }
+
+    @Test
+	public void testAdd2() {
+        double[][] A = {{2., 2., 2.}, {2., 2., 2.}, {2., 2., 2.}};
+        Matrix correct = new Matrix(A);
+        Matrix m1 = new Matrix(3, 3, 1);
+        Matrix m2 = new Matrix(3, 3, 2);
+        Matrix res = m1.add(m2);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (!eq)
+            System.err.println("Test Add2: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Sum matrix contains incorrect values\n");
+    }
+
+	@Test
+    public void testSub1() {
+        Matrix correct = new Matrix(3, 3);
+        Matrix m1 = new Matrix(3, 3, 1);
+        Matrix m2 = new Matrix(3, 3, 1);
+        Matrix res = m1.sub(m2);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Sub1: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Matrix doesn't contain expected values\n");
+    }
+
+    @Test
+	public void testSub2() {
+        double[][] A = {{5., 1., 2.}, {7., 4., 2.}, {3., 6., 2.}};
+        double[][] B = {{4., 0., 1.}, {6., 3., 1.}, {2., 5., 1.}};
+        Matrix m1 = new Matrix(A);
+        Matrix m2 = new Matrix(B);
+        Matrix res = m1.sub(m2);
+        Matrix correct = new Matrix(3, 3, 1);
+        boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Sub2: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Sum matrix contains incorrect values\n");
+    }
+
+    @Test
+    public void testTrans() {
+        double[][] A = {{1., 2., 3.}, {4., 5., 6.}, {7., 8., 9.}};
+        double[][] B = {{1., 4., 7.}, {2., 5., 8.}, {3., 6., 9.}};
+        Matrix m1 = new Matrix(A);
+        Matrix correct = new Matrix(B);
+        Matrix res = m1.transpose();
+	    boolean eq = true;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (res.get(i, j) != correct.get(i, j))
+                    eq = false;
+            }
+        }
+        if (eq)
+            System.err.println("Test Transpose: PASSED\n");
+        else
+            System.err.println("RESULT: FAILED. Sum matrix contains incorrect values\n");
+         
+    }
+
 }

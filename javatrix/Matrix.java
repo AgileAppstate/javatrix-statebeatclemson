@@ -95,7 +95,7 @@ public class Matrix{
 	*@param j	column index
 	*@return A(i,j)
 	*/
-	public double get (int i, int j) {
+	public double get(int i, int j) {
 	    return A[i][j];
 	}
 	
@@ -416,4 +416,67 @@ public class Matrix{
 	    return Z;
 	}	
 
+    /**
+     * Create and Return n-by-n identity matrix
+     * @param n int dimension of the matrix
+    */
+    public static Matrix identity(int n) {
+        Matrix I = new Matrix(n, n);
+        for (int i = 0; i < n; i++)
+            I.A[i][i] = 1;
+        return I;
+    }
+
+    /**
+     * Create and return Matrix C
+     * @param B another Matrix
+     * @return matrix sum, A + B
+     */
+    public Matrix add(Matrix B) {
+        if (this.m != B.m || this.n != B.n)
+            throw new RuntimeException("Illegal matrix dimensions");
+        Matrix C = new Matrix(m, n);
+        for (int i = 0; i < m; i++) 
+        {
+            for (int j = 0; j < n; j++)
+            {
+                C.A[i][j] = this.A[i][j] + B.A[i][j];
+            }
+        }
+        return C;
+    }
+
+	/**
+     * Create and return Matrix C
+     * @param B another Matrix
+     * @return matrix sub, A - B
+     */
+    public Matrix sub(Matrix B) {
+        if (this.m != B.m || this.n != B.n)
+            throw new RuntimeException("Illegal matrix dimensions");
+        Matrix C = new Matrix(m, n);
+        for (int i = 0; i < m; i++) 
+        {
+            for (int j = 0; j < n; j++)
+            {
+                C.A[i][j] = this.A[i][j] - B.A[i][j];
+            }
+        }
+        return C;
+    }
+
+    /**
+     * Create and return the transpose of the calling Matrix
+    */
+    public Matrix transpose() {
+        Matrix B = new Matrix(n, m);
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                B.A[j][i] = this.A[i][j];
+            }
+        }
+        return B;
+    }
 }
