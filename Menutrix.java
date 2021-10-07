@@ -27,7 +27,8 @@ public class Menutrix {
             		System.out.println("2. Create single-value matrix");
 	    		System.out.println("3. Create matrix from 2D array");
 	    		System.out.println("4. Create matrix from 1D packed array");
-			System.out.println("5. Create identity matrix");	
+			System.out.println("5. Create identity matrix");
+			System.out.println("6. Go Back");	
 	   		System.out.println("-------------------");
 			choice = sc.nextInt();
 			sc.nextLine();
@@ -123,6 +124,8 @@ public class Menutrix {
 					A.print(9,2);
 
 					break;
+				case 6:
+					break;
 				default:
 					System.out.println("Invalid selection");
       			    		break; // This break is not really necessary
@@ -167,7 +170,8 @@ public class Menutrix {
      	    		System.out.println("1. Edit single value of matrix");
             		System.out.println("2. Edit row of matrix");
 	    		System.out.println("3. Edit column of matrix");
-	    		System.out.println("4. Edit entire matrix");	
+	    		System.out.println("4. Edit entire matrix");
+			System.out.println("5. Go Back");	
 	   		System.out.println("-------------------");
 			choice = sc.nextInt();
 			sc.nextLine();
@@ -227,7 +231,20 @@ public class Menutrix {
 					    A.set(r, j, val);
 					}
 					break;
-
+				case 4:
+					int rowSize = A.getRowDimension();
+					int colSize = A.getColumnDimension();
+					for (int row = 0; row < rowSize; row++) {
+    					    for (int col = 0; col < colSize; col++) {
+					        System.out.print("Enter value for row " + (row+1) + ", column " + (col+1) + ": "); 
+						val = sc.nextDouble();
+						sc.nextLine();
+						A.set(row, col, val);
+    					    }
+ 					}
+					break;
+				case 5:
+					break;
 				default:
 					System.out.println("Invalid selection");
       			    		break; // This break is not really necessary
