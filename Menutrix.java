@@ -15,14 +15,13 @@ public class Menutrix {
 	    System.out.println("---choose option---");
      	    System.out.println("1. Create matrix");
             System.out.println("2. Edit matrix");
-	    System.out.println("3. Print matrix");
+	    System.out.println("3. Print matrices");
 	    System.out.println("4. Exit");	
 	    System.out.println("-------------------");
 	    choice = sc.nextInt();
 	    sc.nextLine();
 	    switch (choice) {
-	    	//create matrix
-		case 1:
+		case 1: //create matrix
 			System.out.println("---choose option---");
      	    		System.out.println("1. Create matrix of zeros");
             		System.out.println("2. Create single-value matrix");
@@ -130,7 +129,8 @@ public class Menutrix {
 	
 			}
 			break;
-		case 2:
+
+		case 2:	//edit a matrix
 			if (A == null) {
 			    System.out.println("Please create a matrix first.");
 			    break;
@@ -141,39 +141,98 @@ public class Menutrix {
 			int j = 0;
 			double s = 0;
 			String cont = "";
+			String corr = "";
 			boolean again = true;
 			
-			    System.out.print("Which matrix do you want to edit? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
-    			    index = sc.nextInt();
-			    sc.nextLine();
-
 			while(again) {
-			    A = mats.get(index);
-			    System.out.println("Chosen matrix: ");
-			    A.print(6,2);
-			
-			    System.out.print("Enter row index to edit " + (A.getRowDimension() - A.getRowDimension()) + "-" + (A.getRowDimension()-1) + ": ");
-			    i = sc.nextInt();
-			    sc.nextLine();
-			
-			    System.out.print("Enter column index to edit " + (A.getColumnDimension()- A.getColumnDimension()) + "-" + (A.getColumnDimension() - 1) + ": ");
-			    j = sc.nextInt();
-			    sc.nextLine();
+				System.out.print("Which matrix do you want to edit? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    				index = sc.nextInt();
+				sc.nextLine();
 
-			    System.out.print("Enter value: ");
-			    s = sc.nextDouble();
-			    sc.nextLine();
+				A = mats.get(index);
+				System.out.println("Chosen matrix: ");
+				A.print(6,2);
+					
+				System.out.print("Correct (y/n)? ");
+				corr = sc.next();
+				sc.nextLine();
+				
+				if(corr.equalsIgnoreCase("y")) again = false;
+				else again = true;
+			}
 			
-			    A.set(i, j, s);
+			again = true;
 
-			    System.out.print("Continue editing? (y/n): ");
-			    cont = sc.next();
-			    sc.nextLine();
+			System.out.println("---choose option---");
+     	    		System.out.println("1. Edit single value of matrix");
+            		System.out.println("2. Edit row of matrix");
+	    		System.out.println("3. Edit column of matrix");
+	    		System.out.println("4. Edit entire matrix");	
+	   		System.out.println("-------------------");
+			choice = sc.nextInt();
+			sc.nextLine();
+			
+			switch(choice) {
+				case 1: 
+					while(again) {    		    
+			    		    	System.out.print("Enter row index to edit " + (A.getRowDimension() - A.getRowDimension()) + "-" + (A.getRowDimension()-1) + ": ");
+			    		    	i = sc.nextInt();
+			    		    	sc.nextLine();
+			
+			    		    	System.out.print("Enter column index to edit " + (A.getColumnDimension()- A.getColumnDimension()) + "-" + (A.getColumnDimension() - 1) + ": ");
+			   		    	j = sc.nextInt();
+			    		    	sc.nextLine();
+
+			    		    	System.out.print("Enter value: ");
+			    		    	s = sc.nextDouble();
+			    		    	sc.nextLine();
+			
+			    		    	A.set(i, j, s);
+
+			    		    	System.out.print("Edit another value? (y/n): ");
+			    		    	cont = sc.next();
+			    		    	sc.nextLine();
 	
-			    if(cont.equalsIgnoreCase("y")) {
-			    	again = true;
-			    }
-			    else again = false;	
+			    		    	if(cont.equalsIgnoreCase("y")) {
+			    			    again = true;
+			    		    	}
+			    		    	else again = false;
+			    		    }
+					break;
+				case 2: 
+					System.out.print("Enter row index to edit " + (A.getRowDimension() - A.getRowDimension()) + "-" + (A.getRowDimension()-1) + ": ");
+			    		i = sc.nextInt();
+			    		sc.nextLine();					
+					
+					double val = 0;
+					int size = A.getRowDimension()-1;
+					for (int c = 0; c <= size; c++) {
+					    System.out.print("Enter value: ");
+					    val = sc.nextDouble();
+					    sc.nextLine();
+					    A.set(i, c, val);
+					}
+					break;
+				case 3:
+					System.out.print("Enter column index to edit " + (A.getColumnDimension()- A.getColumnDimension()) + "-" + (A.getColumnDimension() - 1) + ": ");
+			   		j = sc.nextInt();
+			    		sc.nextLine();					
+					
+					val = 0;
+					size = A.getColumnDimension()-1;
+					for (int r = 0; r <= size; r++) {
+					    System.out.print("Enter value: ");
+					    val = sc.nextDouble();
+					    sc.nextLine();
+					    A.set(r, j, val);
+					}
+					break;
+
+				default:
+					System.out.println("Invalid selection");
+      			    		break; // This break is not really necessary
+			    
+
 			}
 			System.out.println("Your new matrix: ");
 			A.print(6,2); 
