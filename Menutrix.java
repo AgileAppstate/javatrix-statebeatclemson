@@ -12,17 +12,22 @@ public class Menutrix {
 	ArrayList<Matrix> mats = new ArrayList<Matrix>();
 
 	while(runAgain) {
-	    System.out.println("---choose option---");
-     	    System.out.println("1. Create matrix");
-            System.out.println("2. Edit matrix");
-	    System.out.println("3. Print matrices");
-	    System.out.println("4. Exit");	
-	    System.out.println("-------------------");
+	    System.out.println();
+	    System.out.println("----Matrix Menu----");
+     	    System.out.println("1. Create");
+            System.out.println("2. Edit");
+	    System.out.println("3. Print");
+	    System.out.println("4. Multiply");
+	    System.out.println("5. Add");
+	    System.out.println("6. Subtract");
+	    System.out.println("7. Transpose");
+	    System.out.println("8. Exit");
+	    System.out.println("---Choose Option---");
 	    choice = sc.nextInt();
 	    sc.nextLine();
 	    switch (choice) {
 		case 1: //create matrix
-			System.out.println("---choose option---");
+			System.out.println("---Choose Option---");
      	    		System.out.println("1. Create matrix of zeros");
             		System.out.println("2. Create single-value matrix");
 	    		System.out.println("3. Create matrix from 2D array");
@@ -166,7 +171,7 @@ public class Menutrix {
 			
 			again = true;
 
-			System.out.println("---choose option---");
+			System.out.println("---Choose Option---");
      	    		System.out.println("1. Edit single value of matrix");
             		System.out.println("2. Edit row of matrix");
 	    		System.out.println("3. Edit column of matrix");
@@ -269,7 +274,19 @@ public class Menutrix {
 			    }
 			    break;
 			}
-		case 4:
+		case 4: //multiply
+			
+			break;
+		case 5: //add
+			
+			break;
+		case 6: //subtract
+			
+			break;
+		case 7: //transpose
+			
+			break;
+		case 8:
 			System.exit(0);
 			break;
 		default:
