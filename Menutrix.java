@@ -9,6 +9,8 @@ public class Menutrix {
 	int choice = 0;
 	boolean runAgain = true;
 	Matrix A = null;
+	Matrix B = null;
+	Matrix C = null;
 	ArrayList<Matrix> mats = new ArrayList<Matrix>();
 
 	while(runAgain) {
@@ -275,7 +277,116 @@ public class Menutrix {
 			    break;
 			}
 		case 4: //multiply
+			if (A == null) {
+			    System.out.println("Please create a matrix first.");
+			    break;
+			}
+			System.out.println("---Choose Option---");
+     	    		System.out.println("1. Multiply matrix by scalar");
+            		System.out.println("2. Multiply two matrices together");
+			System.out.println("3. Go Back");	
+	   		System.out.println("-------------------");
+			choice = sc.nextInt();
+			sc.nextLine();
 			
+			index = 0;
+			again = true;
+			int ind = 0;
+			
+			switch (choice) {
+				case 1:
+					System.out.println("Your stored matrices: ");
+					for (Matrix m : mats) {				
+					    System.out.println("-----Index " + ind + "-----");
+				            m.print(6,2);
+					    System.out.println("--------------------");
+					    ind ++;
+					}
+					while(again) {
+						System.out.print("Which matrix do you want to multiply by a scalar? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    						index = sc.nextInt();
+						sc.nextLine();
+
+						A = mats.get(index);
+						System.out.println("Chosen matrix: ");
+						A.print(6,2);
+					
+						System.out.print("Correct (y/n)? ");
+						corr = sc.next();
+						sc.nextLine();
+				
+						if(corr.equalsIgnoreCase("y")) again = false;
+						else again = true;
+					}
+					System.out.print("Value to scale matrix by: ");
+					double v = sc.nextDouble();
+					sc.nextLine();
+					
+					A = A.times(v);
+					System.out.println("Your new matrix: ");
+					A.print(6,2);
+					break;
+				case 2:
+					int index1 = 0;
+					int index2 = 0;
+					if (mats.size() <2) {
+					    System.out.println("Please create two matrices first.");
+					    break;
+					}
+					else {
+						System.out.println("Your stored matrices: ");
+						for (Matrix m : mats) {				
+					   		System.out.println("-----Index " + ind + "-----");
+				            		m.print(6,2);
+					    		System.out.println("--------------------");
+					    		ind ++;
+						}
+						again = true;
+						while(again) {
+							System.out.print("First matrix for multiplication? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    							index1 = sc.nextInt();
+							sc.nextLine();
+
+							A = mats.get(index1);
+							System.out.println("Chosen matrix: ");
+							A.print(6,2);
+					
+							System.out.print("Correct (y/n)? ");
+							corr = sc.next();
+							sc.nextLine();
+				
+							if(corr.equalsIgnoreCase("y")) again = false;
+							else again = true;
+						}
+
+						again = true;
+						while(again) {
+							System.out.print("Second matrix for multiplication? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    							index2 = sc.nextInt();
+							sc.nextLine();
+
+							B = mats.get(index2);
+							System.out.println("Chosen matrix: ");
+							A.print(6,2);
+					
+							System.out.print("Correct (y/n)? ");
+							corr = sc.next();
+							sc.nextLine();
+				
+							if(corr.equalsIgnoreCase("y")) again = false;
+							else again = true;
+						}
+						C = A.times(B);
+						System.out.println("Your new matrix: ");
+						C.print(6,2);				
+					}
+					break;
+				case 3:
+					break;
+				default:
+					System.out.println("Invalid selection");
+      			    		break; // This break is not really necessary
+			}					
 			break;
 		case 5: //add
 			
