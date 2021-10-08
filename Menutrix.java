@@ -389,13 +389,222 @@ public class Menutrix {
 			}					
 			break;
 		case 5: //add
+			if (A == null) {
+			    System.out.println("Please create a matrix first.");
+			    break;
+			}
+			System.out.println("---Choose Option---");
+     	    		System.out.println("1. Add 2 two matrices together");
+            		System.out.println("2. Go Back");	
+	   		System.out.println("-------------------");
+			choice = sc.nextInt();
+			sc.nextLine();
 			
+			index = 0;
+			again = true;
+			ind = 0;
+			
+			switch (choice) {
+				case 1:
+					int index1 = 0;
+					int index2 = 0;
+					if (mats.size() < 2) {
+					    System.out.println("Please create two matrices first.");
+					    break;
+					}
+					else {
+						System.out.println("Your stored matrices: ");
+						for (Matrix m : mats) {				
+					   		System.out.println("-----Index " + ind + "-----");
+				            		m.print(6,2);
+					    		System.out.println("--------------------");
+					    		ind ++;
+						}
+						again = true;
+						while(again) {
+							System.out.print("First matrix for addition? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    							index1 = sc.nextInt();
+							sc.nextLine();
+
+							A = mats.get(index1);
+							System.out.println("Chosen matrix: ");
+							A.print(6,2);
+					
+							System.out.print("Correct (y/n)? ");
+							corr = sc.next();
+							sc.nextLine();
+				
+							if(corr.equalsIgnoreCase("y")) again = false;
+							else again = true;
+						}
+
+						again = true;
+						while(again) {
+							System.out.print("Second matrix for addition? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    							index2 = sc.nextInt();
+							sc.nextLine();
+
+							B = mats.get(index2);
+							System.out.println("Chosen matrix: ");
+							A.print(6,2);
+					
+							System.out.print("Correct (y/n)? ");
+							corr = sc.next();
+							sc.nextLine();
+				
+							if(corr.equalsIgnoreCase("y")) again = false;
+							else again = true;
+						}
+						C = A.add(B);
+						System.out.println("Your new matrix: ");
+						C.print(6,2);				
+					}
+					break;
+				case 2:
+					break;
+				default:
+					System.out.println("Invalid selection");
+      			    		break; // This break is not really necessary
+			}					
 			break;
 		case 6: //subtract
+			if (A == null) {
+			    System.out.println("Please create a matrix first.");
+			    break;
+			}
+			System.out.println("---Choose Option---");
+     	    		System.out.println("1. Subtract a matrix from another");
+            		System.out.println("2. Go Back");	
+	   		System.out.println("-------------------");
+			choice = sc.nextInt();
+			sc.nextLine();
 			
+			index = 0;
+			again = true;
+			ind = 0;
+			
+			switch (choice) {
+				case 1:
+					int index1 = 0;
+					int index2 = 0;
+					if (mats.size() < 2) {
+					    System.out.println("Please create two matrices first.");
+					    break;
+					}
+					else {
+						System.out.println("Your stored matrices: ");
+						for (Matrix m : mats) {				
+					   		System.out.println("-----Index " + ind + "-----");
+				            		m.print(6,2);
+					    		System.out.println("--------------------");
+					    		ind ++;
+						}
+						again = true;
+						while(again) {
+							System.out.print("First matrix for subtraction? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    							index1 = sc.nextInt();
+							sc.nextLine();
+
+							A = mats.get(index1);
+							System.out.println("Chosen matrix: ");
+							A.print(6,2);
+					
+							System.out.print("Correct (y/n)? ");
+							corr = sc.next();
+							sc.nextLine();
+				
+							if(corr.equalsIgnoreCase("y")) again = false;
+							else again = true;
+						}
+
+						again = true;
+						while(again) {
+							System.out.print("Second matrix for subtraction? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    							index2 = sc.nextInt();
+							sc.nextLine();
+
+							B = mats.get(index2);
+							System.out.println("Chosen matrix: ");
+							A.print(6,2);
+					
+							System.out.print("Correct (y/n)? ");
+							corr = sc.next();
+							sc.nextLine();
+				
+							if(corr.equalsIgnoreCase("y")) again = false;
+							else again = true;
+						}
+						C = A.sub(B);
+						System.out.println("Your new matrix: ");
+						C.print(6,2);				
+					}
+					break;
+				case 2:
+					break;
+				default:
+					System.out.println("Invalid selection");
+      			    		break; // This break is not really necessary
+			}
 			break;
 		case 7: //transpose
+			if (A == null) {
+			    System.out.println("Please create a matrix first.");
+			    break;
+			}
+			System.out.println("---Choose Option---");
+     	    		System.out.println("1. Take the transpose of a Matrix");
+            		System.out.println("2. Go Back");	
+	   		System.out.println("-------------------");
+			choice = sc.nextInt();
+			sc.nextLine();
 			
+			index = 0;
+			again = true;
+			ind = 0;
+			
+			switch (choice) {
+				case 1:
+					int index1 = 0;
+					if (mats.size() < 1) {
+					    System.out.println("Please create a matrix first.");
+					    break;
+					}
+					else {
+						System.out.println("Your stored matrices: ");
+						for (Matrix m : mats) {				
+					   		System.out.println("-----Index " + ind + "-----");
+				            		m.print(6,2);
+					    		System.out.println("--------------------");
+					    		ind ++;
+						}
+						again = true;
+						while(again) {
+							System.out.print("Matrix to transpose? " + (mats.size()-mats.size()) + "-" + (mats.size()-1) + ": ");
+    							index1 = sc.nextInt();
+							sc.nextLine();
+
+							A = mats.get(index1);
+							System.out.println("Chosen matrix: ");
+							A.print(6,2);
+					
+							System.out.print("Correct (y/n)? ");
+							corr = sc.next();
+							sc.nextLine();
+				
+							if(corr.equalsIgnoreCase("y")) again = false;
+							else again = true;
+						}
+						C = A.transpose();
+						System.out.println("Your new matrix: ");
+						C.print(6,2);				
+					}
+					break;
+				case 2:
+					break;
+				default:
+					System.out.println("Invalid selection");
+      			    		break; // This break is not really necessary
+			}
 			break;
 		case 8:
 			System.exit(0);
