@@ -216,7 +216,7 @@ public class MatrixTest {
         Matrix correct = new Matrix(A);
         Matrix m1 = new Matrix(3, 3, 1);
         Matrix m2 = new Matrix(3, 3, 1);
-        Matrix res = m1.add(m2);
+        Matrix res = m1.plus(m2);
         boolean eq = true;
         for (int i = 0; i < 3; i++)
         {
@@ -238,7 +238,7 @@ public class MatrixTest {
         Matrix correct = new Matrix(A);
         Matrix m1 = new Matrix(3, 3, 1);
         Matrix m2 = new Matrix(3, 3, 2);
-        Matrix res = m1.add(m2);
+        Matrix res = m1.plus(m2);
         boolean eq = true;
         for (int i = 0; i < 3; i++)
         {
@@ -259,7 +259,7 @@ public class MatrixTest {
         Matrix correct = new Matrix(3, 3);
         Matrix m1 = new Matrix(3, 3, 1);
         Matrix m2 = new Matrix(3, 3, 1);
-        Matrix res = m1.sub(m2);
+        Matrix res = m1.minus(m2);
         boolean eq = true;
         for (int i = 0; i < 3; i++)
         {
@@ -281,7 +281,7 @@ public class MatrixTest {
         double[][] B = {{4., 0., 1.}, {6., 3., 1.}, {2., 5., 1.}};
         Matrix m1 = new Matrix(A);
         Matrix m2 = new Matrix(B);
-        Matrix res = m1.sub(m2);
+        Matrix res = m1.minus(m2);
         Matrix correct = new Matrix(3, 3, 1);
         boolean eq = true;
         for (int i = 0; i < 3; i++)
