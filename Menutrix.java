@@ -376,9 +376,17 @@ public class Menutrix {
 							if(corr.equalsIgnoreCase("y")) again = false;
 							else again = true;
 						}
-						C = A.times(B);
-						System.out.println("Your new matrix: ");
-						C.print(6,2);				
+
+						if(A.getColumnDimension() != B.getRowDimension()) {
+							System.out.println("\n ERROR: Inner matrix dimension must agree");
+							break;
+						}
+						else {
+
+							C = A.times(B);
+							System.out.println("Your new matrix: ");
+							C.print(6,2);
+						}				
 					}
 					break;
 				case 3:
@@ -394,7 +402,7 @@ public class Menutrix {
 			    break;
 			}
 			System.out.println("---Choose Option---");
-     	    		System.out.println("1. Add 2 two matrices together");
+     	    		System.out.println("1. Add two matrices together");
             		System.out.println("2. Go Back");	
 	   		System.out.println("-------------------");
 			choice = sc.nextInt();
