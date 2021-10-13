@@ -463,9 +463,15 @@ public class Menutrix {
 							if(corr.equalsIgnoreCase("y")) again = false;
 							else again = true;
 						}
-						C = A.add(B);
-						System.out.println("Your new matrix: ");
-						C.print(6,2);				
+						if(A.getColumnDimension() != B.getColumnDimension() && A.getRowDimension() != B.getRowDimension() ) {
+							System.out.println("\n ERROR: Matrices need to be the same size");
+							break;
+						}
+						else {
+							C = A.add(B);
+							System.out.println("Your new matrix: ");
+							C.print(6,2);
+						}				
 					}
 					break;
 				case 2:
@@ -542,9 +548,15 @@ public class Menutrix {
 							if(corr.equalsIgnoreCase("y")) again = false;
 							else again = true;
 						}
-						C = A.sub(B);
-						System.out.println("Your new matrix: ");
-						C.print(6,2);				
+						if(A.getColumnDimension() != B.getColumnDimension() || A.getRowDimension() != B.getRowDimension() ) {
+							System.out.println("\n ERROR: Matrices need to be the same size");
+							break;
+						}
+						else {
+							C = A.sub(B);
+							System.out.println("Your new matrix: ");
+							C.print(6,2);
+						}				
 					}
 					break;
 				case 2:

@@ -432,7 +432,7 @@ public class Matrix{
      * @param B another Matrix
      * @return matrix sum, A + B
      */
-    public Matrix add(Matrix B) {
+    public Matrix plus(Matrix B) {
         if (this.m != B.m || this.n != B.n)
             throw new RuntimeException("Illegal matrix dimensions");
         Matrix C = new Matrix(m, n);
@@ -449,9 +449,9 @@ public class Matrix{
 	/**
      * Create and return Matrix C
      * @param B another Matrix
-     * @return matrix sub, A - B
+     * @return matrix minus, A - B
      */
-    public Matrix sub(Matrix B) {
+    public Matrix minus(Matrix B) {
         if (this.m != B.m || this.n != B.n)
             throw new RuntimeException("Illegal matrix dimensions");
         Matrix C = new Matrix(m, n);
